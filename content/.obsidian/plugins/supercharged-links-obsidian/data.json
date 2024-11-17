@@ -1,0 +1,86 @@
+{
+  "targetAttributes": [],
+  "targetTags": true,
+  "getFromInlineField": true,
+  "enableTabHeader": true,
+  "activateSnippet": true,
+  "enableEditor": true,
+  "enableFileList": true,
+  "enableBacklinks": true,
+  "enableQuickSwitcher": true,
+  "enableSuggestor": true,
+  "selectors": [
+    {
+      "type": "path",
+      "name": "",
+      "value": "_resources/",
+      "matchCaseSensitive": true,
+      "match": "contains",
+      "uid": "b4b5-d3a1",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "path",
+      "name": "to",
+      "value": ".pdf",
+      "matchCaseSensitive": false,
+      "match": "endswith",
+      "uid": "4159-0f4e",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "path",
+      "name": "",
+      "value": ".jpg",
+      "matchCaseSensitive": false,
+      "match": "endswith",
+      "uid": "b418-9220",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "path",
+      "name": "",
+      "value": ".png",
+      "matchCaseSensitive": false,
+      "match": "endswith",
+      "uid": "ed26-f0d4",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "path",
+      "name": "",
+      "value": ".doc",
+      "matchCaseSensitive": false,
+      "match": "endswith",
+      "uid": "52af-9d12",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    },
+    {
+      "type": "path",
+      "name": "",
+      "value": ".docx",
+      "matchCaseSensitive": false,
+      "match": "endswith",
+      "uid": "36dc-9f6c",
+      "selectText": true,
+      "selectAppend": true,
+      "selectPrepend": true,
+      "selectBackground": true
+    }
+  ]
+}

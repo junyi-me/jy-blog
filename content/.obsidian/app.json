@@ -1,0 +1,19 @@
+{
+  "vimMode": true,
+  "trashOption": "local",
+  "attachmentFolderPath": "./_resources",
+  "newFileLocation": "folder",
+  "newFileFolderPath": "MyNotebook",
+  "readableLineLength": false,
+  "showLineNumber": true,
+  "promptDelete": false,
+  "alwaysUpdateLinks": true,
+  "spellcheck": true,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "focusNewTab": true
+}
