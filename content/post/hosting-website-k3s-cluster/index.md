@@ -1,13 +1,20 @@
 ---
-date: '2024-11-12T21:58:00-07:00'
-title: 'Hosting an HTTPS website on a HA k3s cluster'
-image: 'Https_Protocolo.jpg'
-tags: ['k3s', 'kubernetes', 'self-hosting']
+date: 2024-11-12T21:58:00-07:00
+title: Hosting an HTTPS website on a HA k3s cluster through SSH
+image: Https_Protocolo.jpg
+tags:
+  - k3s
+  - kubernetes
+  - self-hosting
 ---
 
-Just a few days after I set up my k3s cluster with an external data source, I found this article [High Availability Embedded etcd](https://docs.k3s.io/datastore/ha-embedded) on k3s' official website. Since the external database was the single point of failure in my previous setup, I was excited to try this out.
+Just a few days after I set up my k3s cluster with an external data source, I found this article [High Availability Embedded etcd](https://docs.k3s.io/datastore/ha-embedded) on k3s' official website. Since the external database was the single point of failure in my [previous setup](https://blog.junyi.me/p/setting-up-a-k3s-cluster-for-my-home-lab/), I was excited to try this out.
 
-This time, in addition to setting up the cluster itself, I also set up `metal-lb` for load balancing and `cert-manager` for enabling HTTPS. So this is basically everything I've done to set up a k3s cluster from several vanilla Debian 12 VMs. The physical machines and VMs haven't changed from [my previous attempt](https://blog.junyi.me/post/setup-k3s-cluster-home/).
+This time, in addition to setting up the cluster itself, I also set up `metal-lb` for load balancing and `cert-manager` for enabling HTTPS. So this is basically everything I've done to serve a highly available HTTPS website on several vanilla Debian 12 VMs.
+
+As in the title, I'm using SSH remote port forwarding to expose my home network to the internet. This is not typical, but is ideal if you
+1. don't have control over your router
+2. don't have a dedicated public IP for your household
 
 References
 1. https://docs.k3s.io/datastore/ha-embedded
@@ -584,8 +591,7 @@ If everything worked, congratulations! 🥳🥳🥳 You have successfully self-h
 As a software engineer, I had written quite a lot of code for web services, including front-end, back-end, CLI runners, and so on. But deploying them to test environment and production environment were rarely my job (especially production), and a lot of it seemed like magic to me. Setting up this home lab environment was a step towards demystifying that process, and I feel like I'm learning a lot just by following tutorials and resolving the issues I encountered along the way.
 
 At the moment, I have some thoughts on improving this setup, for example:
-1. Set up DDNS on the cloud VM, just in case the public IP changes
+1. Set up DDNS on the cloud VM, in case the public IP changes
 2. Set up a DNS failover for the master nodes, so that if one node goes down, I can automatically use the remaining ones for `kubectl`
 
 but these are for another time.
-

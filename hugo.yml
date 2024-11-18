@@ -52,12 +52,12 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 🍥
-        subtitle: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        emoji: 💪
+        subtitle: Web development and self-hosting
         avatar:
             enabled: true
             local: true
-            src: img/avatar.png
+            src: img/ipa.jpg
 
     article:
         math: false

@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "post/choose-ip-k3s-workers/index.md",
+                "file": "post/hosting-website-k3s-cluster/index.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -266,11 +266,11 @@
       "obsidian-read-it-later:ReadItLater: Save clipboard": true
     }
   },
-  "active": "786753144e0cdf6c",
+  "active": "47056a71df9ee1d8",
   "lastOpenFiles": [
+    "post/choose-ip-k3s-workers/index.md",
     "post/hosting-website-k3s-cluster/index.md",
     "post/choose-ip-k3s-workers/sideshot.jpg",
-    "post/choose-ip-k3s-workers/index.md",
     "post/choose-ip-k3s-workers",
     "post/hosting-website-k3s-cluster/Https_Protocolo.jpg",
     "post/hosting-website-k3s-cluster/firefox.png",

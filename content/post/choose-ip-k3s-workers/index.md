@@ -1,5 +1,5 @@
 ---
-date: 2024-11-10T06:56:21-07:00
+date: 2024-11-16
 title: k3s worker node with multiple IPs
 draft: false
 image: 
@@ -7,6 +7,7 @@ tags:
   - k3s
   - kubernetes
   - networking
+  - linux
 ---
 
 ## The issue
