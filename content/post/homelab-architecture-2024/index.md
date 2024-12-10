@@ -1,8 +1,8 @@
 ---
-date: "2024-12-10"
-title: "My home lab - 2024"
-image: "images/motherboard.jpg"
-tags: ["self-hosting", "kubernetes"]
+date: 2024-12-10
+title: My home lab - 2024
+image: images/motherboard.jpg
+tags: [self-hosting, kubernetes]
 ---
 
 Year 2024 is coming to an end, so I thought it's a good time to reflect on my home lab setup.

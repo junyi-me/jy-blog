@@ -1,7 +1,7 @@
 ---
-date: "2024-12-10"
-title: "Setting up host-only network on VMWare Ubuntu 7"
-tags: ['VM', 'networking']
+date: 2024-12-10
+title: Setting up host-only network on VMWare Ubuntu 7
+tags: [VM, networking]
 ---
 
 During my work, I had to set up an Ubuntu 7 VM on VMWare, and copy some files out of it. Ubuntu 7 is a very old system, and some VMWare features did not work out-of-the-box. \

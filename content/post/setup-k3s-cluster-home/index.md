@@ -1,9 +1,9 @@
 ---
-date: '2024-11-10T06:56:21-07:00'
-title: 'Setting up a k3s cluster for my home lab'
-image: 'sideshot.jpg'
-tags: ['k3s', 'kubernetes', 'self-hosting']
-category: 'self-hosting'
+date: 2024-11-10T06:56:21-07:00
+title: Setting up a k3s cluster for my home lab
+image: sideshot.jpg
+tags: [k3s, kubernetes, self-hosting]
+category: self-hosting
 ---
 
 This is a written record of how I set up a [k3s](https://k3s.io/) cluster on some bare metal machines.

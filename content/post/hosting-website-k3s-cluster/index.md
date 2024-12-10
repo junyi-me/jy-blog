@@ -2,10 +2,7 @@
 date: 2024-11-12T21:58:00-07:00
 title: Hosting an HTTPS website on a HA k3s cluster through SSH
 image: Https_Protocolo.jpg
-tags:
-  - k3s
-  - kubernetes
-  - self-hosting
+tags: [k3s, kubernetes, self-hosting]
 ---
 
 Just a few days after I set up my k3s cluster with an external data source, I found this article [High Availability Embedded etcd](https://docs.k3s.io/datastore/ha-embedded) on k3s' official website. Since the external database was the single point of failure in my [previous setup](https://blog.junyi.me/p/setting-up-a-k3s-cluster-for-my-home-lab/), I was excited to try this out.
