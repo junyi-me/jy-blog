@@ -30,7 +30,7 @@ services:
         id:
 
 pagination:
-    pagerSize: 3
+    pagerSize: 10
 
 permalinks:
     post: /p/:slug/
@@ -44,7 +44,7 @@ params:
     favicon: # e.g.: favicon placed in `static/favicon.ico` of your site folder, then set this field to `/favicon.ico` (`/` is necessary)
 
     footer:
-        since: 2020
+        since: 2024
         customText:
 
     dateFormat:
@@ -57,7 +57,7 @@ params:
         avatar:
             enabled: true
             local: true
-            src: img/ipa.jpg
+            src: img/avatar.jpg
 
     article:
         math: false
