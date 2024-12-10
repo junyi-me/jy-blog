@@ -115,7 +115,8 @@
               "title": "Trash explorer"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",

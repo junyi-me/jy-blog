@@ -1,5 +1,4 @@
 full:
-	rm -rf /mnt/kshare01/pvdata/hugo/jy-blog
 	cp -r . /mnt/kshare01/pvdata/hugo/jy-blog
 
 content:
