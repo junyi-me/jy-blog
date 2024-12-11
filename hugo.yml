@@ -1,6 +1,6 @@
 baseurl: https://blog.junyi.me/
 languageCode: en-us
-theme: hugo-theme-stack
+theme: ["hugo-admonitions", "hugo-theme-stack"]
 title: Junyi's blog
 copyright: Junyi Wang
 
@@ -199,6 +199,12 @@ menu:
     main: []
 
     social:
+        - identifier: personal
+          name: Personal website
+          url: https://profile.junyi.me/
+          params:
+              icon: user
+
         - identifier: github
           name: GitHub
           url: https://github.com/jywang99/

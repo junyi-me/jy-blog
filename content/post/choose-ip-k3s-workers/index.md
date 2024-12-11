@@ -4,6 +4,7 @@ title: k3s worker node with multiple IPs
 draft: false
 image: 
 tags: [k3s, kubernetes, networking, linux]
+categories: [self-hosting]
 ---
 
 ## The issue

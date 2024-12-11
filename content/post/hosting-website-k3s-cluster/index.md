@@ -3,6 +3,7 @@ date: 2024-11-12T21:58:00-07:00
 title: Hosting an HTTPS website on a HA k3s cluster through SSH
 image: Https_Protocolo.jpg
 tags: [k3s, kubernetes, self-hosting]
+categories: [self-hosting]
 ---
 
 Just a few days after I set up my k3s cluster with an external data source, I found this article [High Availability Embedded etcd](https://docs.k3s.io/datastore/ha-embedded) on k3s' official website. Since the external database was the single point of failure in my [previous setup](https://blog.junyi.me/p/setting-up-a-k3s-cluster-for-my-home-lab/), I was excited to try this out.
@@ -79,9 +80,8 @@ kmaster02   Ready    control-plane,etcd,master   142m   v1.30.6+k3s1
 kmaster03   Ready    control-plane,etcd,master   141m   v1.30.6+k3s1
 ```
 
-{{% callout warning %}}
-The number of master nodes should be an odd number, as stated in [the official guide](https://docs.k3s.io/datastore/ha-embedded)
-{{% /callout %}}
+> [!WARNING]
+> The number of master nodes should be an odd number, as stated in [the official guide](https://docs.k3s.io/datastore/ha-embedded)
 
 If you have a non-standard network setup, take some time to verify that the `kubectl` command works on all master nodes, and also make sure to check the pods in `kube-system` cluster are running properly.
 ```
@@ -113,10 +113,8 @@ kwork03     Ready    <none>                      157m   v1.30.6+k3s1
 kwork04     Ready    <none>                      156m   v1.30.6+k3s1
 kwork06     Ready    <none>                      155m   v1.30.6+k3s1
 ```
-
-{{% callout note %}}
-Node name refers to the hostname of each node. To change it, just change the hostname.
-{{% /callout %}}
+> [!NOTE]
+> Node name refers to the hostname of each node. To change it, just change the hostname.
 
 ## Control k3s remotely
 The `kubectl` command doesn't have to be ran from the master nodes. To control k3s from another machine, all we have to do is to install `kubectl` package and put the `.kube/config` file in place.
@@ -189,9 +187,8 @@ For `cert-manager`, start by defining resource type `certificate` by using an of
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.16.1/cert-manager.crds.yaml
 ```
 
-{{% callout note %}}
-Be sure to update the version (v1.16.1 in the above example) to the latest available one
-{{% /callout %}}
+> [!TIP]
+> Be sure to update the version (v1.16.1 in the above example) to the latest available one
 
 If installed successfully, you should see no error with this command:
 ```
@@ -205,12 +202,12 @@ helm repo add jetstack https://charts.jetstack.io --force-update
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --values=cert-mgr-values.yml --version v1.16.1
 ```
 
-{{% callout note %}}
-Use the same version as above
-{{% /callout %}}
+> [!TIP]
+> Use the same version as above
 
-`cert-mgr-values.yml`:
 ```yml
+# cert-mgr-values.yml
+
 installCRDs: false
 replicaCount: 1
 extraArgs:
@@ -577,9 +574,8 @@ It will complain like this for a while, and finally, when you see a log like thi
 I1112 22:27:35.980150       1 acme.go:236] "certificate issued" logger="cert-manager.controller.sign" resource_name="junyi-me-prod-1" resource_namespace="verse" resource_kind="CertificateRequest" resource_version="v1" related_resource_name="junyi-me-prod-1-35532540" related_resource_namespace="verse" related_resource_kind="Order" related_resource_version="v1"
 ```
 
-{{% callout note %}}
-This has to be done every time you want to deploy a web service in a new namespace, since the generated certificate is only visible in one namespace. Ingress resources in the same namespace can share the same certificate.
-{{% /callout %}}
+> [!NOTE]
+> This has to be done every time you want to deploy a web service in a new namespace, since the generated certificate is only visible in one namespace. Ingress resources in the same namespace can share the same certificate.
 
 With all of these done, you should now be able to access your domain in your browser without any warning. Moment of truth... \
 If everything worked, congratulations! 🥳🥳🥳 You have successfully self-hosted a website. 
