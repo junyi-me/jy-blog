@@ -1,5 +1,5 @@
 ---
-date: 2024-11-16
+date: 2024-12-10
 title: Securely hosting static files with Nginx
 draft: false
 image: 
