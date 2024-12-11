@@ -1,5 +1,5 @@
 ---
-date: 2024-11-10T06:56:21-07:00
+date: 2024-11-10
 title: Setting up a k3s cluster for my home lab
 image: sideshot.jpg
 tags: [k3s, kubernetes, self-hosting]

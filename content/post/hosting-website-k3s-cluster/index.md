@@ -1,5 +1,5 @@
 ---
-date: 2024-11-12T21:58:00-07:00
+date: 2024-12-10
 title: Hosting an HTTPS website on a HA k3s cluster through SSH
 image: Https_Protocolo.jpg
 tags: [k3s, kubernetes, self-hosting]
