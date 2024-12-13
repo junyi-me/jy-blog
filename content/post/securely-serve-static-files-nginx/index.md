@@ -108,7 +108,7 @@ server {
     auth_request /auth-thumb;
   }
 
-  # Auth subrequest for thumbgen directory
+  # Auth subrequest for thumb directory
   location /auth-thumb {
     internal;
     proxy_pass http://api-server-service.example.svc.cluster.local:80/auth-media/thumb;
