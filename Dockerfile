@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:latest AS builder
 
 RUN apt-get update && apt-get install -y wget
 
@@ -11,11 +11,10 @@ RUN rm ${DEB_FILE}
 WORKDIR /hugo
 COPY . .
 
-# Environment variables
-ENV HUGO_ENV=development
-ENV HUGO_BASEURL=http://localhost:1313
-ENV HUGO_APPENDPORT=true
+RUN hugo -e production -d /public
 
-# Start Hugo server
-ENTRYPOINT ["sh", "-c", "hugo server --bind 0.0.0.0 -e ${HUGO_ENV} --baseURL=${HUGO_BASEURL} --appendPort=${HUGO_APPENDPORT}"]
+FROM nginx:alpine
+COPY --from=builder /public /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
 
