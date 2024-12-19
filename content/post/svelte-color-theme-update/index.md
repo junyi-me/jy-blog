@@ -1,6 +1,6 @@
 ---
-date: 2024-12-17
-title: Setting adaptive color theme in Svelte
+date: 2024-12-19
+title: Setting adaptive color theme in Svelte (update)
 image: images/html.jpg
 tags: [svelte, frontend]
 categories: [web-dev]
@@ -10,17 +10,14 @@ Most websites nowadays have light mode, dark mode, and a system adaptive mode. I
 
 In this post I will use [my personal website](https://profile.junyi.me/) as an example to show how to implement this feature.
 
+> [!NOTE]
+> This is an update to the [original post on the same topic]({{< ref "/post/svelte-color-theme" >}})
+
 ## Demo
 ![Light mode](light.png)
 ![Dark mode](dark.png)
 
 ## Implementation
-> [!WARNING]
-> This implementation works, but it **has an issue**: when loading into the page with system theme set to dark, the page flashes white for a second before switching to dark mode.
->
-> ![Flashing white](flash.gif)
->
-> For a better implementation, see [this post]({{< ref "/post/svelte-color-theme-update" >}})
 
 There are three parts to this implementation:
 1. CSS
@@ -30,15 +27,15 @@ There are three parts to this implementation:
 The git repository for this project is public, and can be found [here](https://github.com/jywang99/myself).
 
 ### CSS
+Create a global css file if you don't have one already. I named it `global.css`, and imported it in `app.html`.
 
-First, define a global CSS file to store all the color variables.
-
-I find it easier to manage the color variables all in the body tag, so I can access them in any CSS snippet in any CSS file or Svelte component.
+Inside, place the following CSS blocks:
 
 ```css
 /* global.css */
 
-body {
+/* light mode style variables */
+[data-scheme='light'] {
     --bg-1: hsl(0, 0%, 100%);
     --bg-2: #f5f5fa;
     --bg-3: hsl(206, 20%, 80%);
@@ -53,11 +50,10 @@ body {
     --link: hsl(208, 77%, 47%);
     --link-hover: hsl(208, 77%, 55%);
     --link-active: hsl(208, 77%, 40%);
-    
-    /* ...*/
 }
 
-body.dark {
+/* dark mode style variables */
+[data-scheme='dark'] {
     --bg-1: hsl(0, 0%, 18%);
     --bg-2: #3f3f3f;
     --bg-3: hsl(0, 0%, 40%);
@@ -74,14 +70,7 @@ body.dark {
 }
 ```
 
-Then import it in the main HTML file.
-
-```html
-<!-- app.html -->
-    <!-- ... -->
-    <link rel="stylesheet" href="global.css">
-    <!-- ... -->
-```
+These CSS variables will be only accessible in other html, css, or svelte files if the `data-scheme` attribute is set to the corresponding value.
 
 ### Svelte store
 
@@ -142,9 +131,9 @@ The gist is to use `prefers-color-scheme` [media query](https://developer.mozill
 
   const switchColor = (dark: boolean) => {
     if (dark) {
-      document.body.classList.add('dark');
+      document.documentElement.dataset.scheme = 'dark';
     } else {
-      document.body.classList.remove('dark');
+      document.documentElement.dataset.scheme = 'light';
     }
   };
 
@@ -200,5 +189,50 @@ The gist is to use `prefers-color-scheme` [media query](https://developer.mozill
 <!--...-->
 <Dropdown bind:selected={$store.pref.theme} options={themeOptions} onChange={onConfirm} />
 <!--...-->
+```
+
+### Main html file update
+
+There are two things to do in the main html file, `app.html`:
+1. add the `global.css` stylesheet
+2. add a script to detect the user's system preference
+
+The reason to add the script in the `<header>` is to set the color theme before the page is rendered. This will **prevent the page from flickering when first loaded**, which was the problem in the original post.
+
+```html
+<!-- app.html -->
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%sveltekit.assets%/favicon.png" />
+
+    <!-- Add global css -->
+    <link rel="stylesheet" href="%sveltekit.assets%/css/global.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    %sveltekit.head%
+
+    <!-- set the color scheme variable before page render -->
+    <script>
+      (function() {
+        // Check localStorage for theme
+        const pref = JSON.parse(localStorage.getItem('content') || '{}').pref || {}; // TODO: adjust this to your store structure
+        const theme = pref.theme || 'auto';
+
+        if (theme === 'dark' || (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.dataset.scheme = 'dark';
+        } else {
+          document.documentElement.dataset.scheme = 'light';
+        }
+      })();
+    </script>
+
+</head>
+<body data-sveltekit-preload-data="hover">
+    <div style="display: contents">%sveltekit.body%</div>
+</body>
+</html>
 ```
 
