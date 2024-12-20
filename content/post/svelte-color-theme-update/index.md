@@ -19,10 +19,11 @@ In this post I will use [my personal website](https://profile.junyi.me/) as an e
 
 ## Implementation
 
-There are three parts to this implementation:
-1. CSS
-2. Svelte component
-3. Svelte store
+There are four parts to this implementation:
+1. CSS - define the color theme variables
+2. Svelte component - let user configure the color theme
+3. Svelte store - persist user preference
+4. `app.html` - load the theme before page rendr
 
 The git repository for this project is public, and can be found [here](https://github.com/jywang99/myself).
 

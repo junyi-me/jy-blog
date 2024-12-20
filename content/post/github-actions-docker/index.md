@@ -1,6 +1,6 @@
 ---
 date: 2024-12-18
-title: Using GitHub Actions to automatically build and push docker containers
+title: Using GitHub Actions to automatically build and push docker images
 image: images/pipeline.jpg
 tags: [docker, github, CI/CD, automation]
 categories: [web-dev]
@@ -95,4 +95,6 @@ Now it's time to push your changes to GitHub.
 Once you do, you can go to the `Actions` tab in your repository to see the action "in action".
 
 ![GitHub Actions workflow](github_actions.png)
+
+That's it! Now you should see a new docker image being pushed for every change you make to your repository.
 

@@ -297,7 +297,7 @@ traefik          LoadBalancer   10.43.156.158   192.168.1.101 80:31801/TCP,443:3
 ```
 
 ## Deploy a website
-Now that we have our load balancer and certificate manager ready, it's time to deploy something. Here, I will use my own personal website as an example.
+Now that we have our load balancer and certificate manager ready, it's time to deploy something. Here, I will use [my personal website](https://profile.junyi.me/) as an example.
 
 First, create a namespace and deploy the pod, service, and ingress
 ```bash
