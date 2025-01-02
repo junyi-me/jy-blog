@@ -52,12 +52,11 @@ params:
         lastUpdated: Jan 02, 2006 15:04 MST
 
     sidebar:
-        emoji: 💪
         subtitle: Web development and self-hosting
         avatar:
             enabled: true
             local: true
-            src: img/avatar.jpg
+            src: img/avatar.webp
 
     article:
         math: false
@@ -199,24 +198,11 @@ menu:
     main: []
 
     social:
-        - identifier: personal
-          name: Personal website
-          url: https://profile.junyi.me/
-          weight: 1
+        - identifier: links
+          name: Links page
+          url: https://junyi.me/
           params:
-              icon: user
-
-        - identifier: github
-          name: GitHub
-          url: https://github.com/jywang99/
-          params:
-              icon: brand-github
-
-        - identifier: linkedin
-          name: LinkedIn
-          url: https://www.linkedin.com/in/junyi-wang-976a94199/
-          params:
-              icon: brand-linkedin
+              icon: link
 
 related:
     includeNewer: true

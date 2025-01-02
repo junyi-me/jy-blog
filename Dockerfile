@@ -3,8 +3,9 @@ FROM debian:latest AS builder
 RUN apt-get update && apt-get install -y wget
 
 WORKDIR /tmp
-ARG DEB_FILE=hugo_extended_0.139.4_linux-amd64.deb
-RUN wget https://github.com/gohugoio/hugo/releases/download/v0.139.4/${DEB_FILE}
+ARG VERSION=0.140.1
+ARG DEB_FILE=hugo_extended_${VERSION}_linux-amd64.deb 
+RUN wget https://github.com/gohugoio/hugo/releases/download/v${VERSION}/${DEB_FILE}
 RUN dpkg -i ${DEB_FILE}
 RUN rm ${DEB_FILE}
 
