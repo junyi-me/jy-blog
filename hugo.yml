@@ -203,6 +203,7 @@ menu:
           url: https://junyi.me/
           params:
               icon: link
+              newTab: false
 
 related:
     includeNewer: true
