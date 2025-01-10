@@ -1,14 +1,17 @@
 ---
 date: 2025-01-09
 title: Developing a fullstack application with SvelteKit + Drizzle
-image: images/sveltekit.png
 tags: [svelte, frontend, backend, database]
 categories: [web-dev]
 ---
 
-This is the first part of [Full-stack SvelteKit web app with JWT authentication]({{< ref "/post/sveltekit-jwt-auth" >}}).
+Recently, I learned about [Drizzle](https://orm.drizzle.team/), a new ORM for TypeScript. It occurred to me that it would be interesting to try it out with SvelteKit to build a fullstack application entirely in TypeScript.
 
-This part will cover:
+This article will just cover the basics of setting up a project with SvelteKit and Drizzle, but here is one of my project (WIP) built with this stack: [review-planner](https://github.com/jywang99/review-planner).
+
+As a simple example, this post will cover how to implement a user registration and login workflow with JWT authentication in a SvelteKit application. The source code (with some modifications) can be found here: [svelte-jwt-example](https://github.com/jywang99/svelte-jwt-example).
+
+These are the steps:
 1. Setting up the project
 2. Initializing the database
 3. Setting up the development environment
@@ -327,6 +330,4 @@ Now the simple registration and login form should be working. Navigate to [http:
 Once registered, you should be taken to the login screen, and be able to log in.
 
 ![Successful login](login-success.png)
-
-The next part will cover adding JWT authentication to the application.
 
