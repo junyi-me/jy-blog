@@ -3,7 +3,7 @@ date: 2025-01-31
 title: GitHub Actions Runner on your Kubernetes cluster
 image: images/pipeline.jpg
 tags: [github, CI/CD, kubernetes]
-categories: [web-dev]
+categories: [self-hosting]
 ---
 
 As written in this post: [Using GitHub Actions to automatically build and push docker images]({{< ref "/post/github-actions-docker" >}}), I often use GitHub Actions to build and push docker images to Docker Hub.
@@ -106,10 +106,20 @@ Here, the `build` step uses GitHub's runner to build and push the docker image. 
 
 For details about the `build` job, see [Using GitHub Actions to automatically build and push docker images]({{< ref "/post/github-actions-docker" >}}).
 
-For the secrets, I chose to set them all on the organization level. DOCKER_USERNAME and DOCKER_PASSWORD are just string values, but the KUBE_CONFIG is a bit different. It is the content of the `~/.kube/config` base64 encoded. You can get it by running:
+For the secrets in the above manifest, I chose to set them all on the organization level. `DOCKER_USERNAME` and `DOCKER_PASSWORD` are just string values, but the `KUBE_CONFIG` is a bit different. It is the content of the `~/.kube/config` base64 encoded. You can get it by running:
 ```bash
 cat ~/.kube/config | base64
 ```
+
+> [!TIP]
+> For a HA cluster where the IP of master node is not static, you can use the hostname `kubernetes.default.svc` in the `KUBE_CONFIG` file. For example:
+> ```yaml
+> clusters:
+> - cluster:
+>     certificate-authority-data: ...
+>     server: https://kubernetes.default.svc
+> ```
+> By leveraging the internal DNS of Kubernetes, we can avoid the need to update the `KUBE_CONFIG` secret every time the master node IP changes.
 
 As for how to set these secrets, you can follow the official guide: [Using secrets in GitHub Actions](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions).
 
