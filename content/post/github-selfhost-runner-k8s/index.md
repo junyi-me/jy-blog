@@ -14,7 +14,7 @@ Every time I had to watch the action to finish, and then **manually restart** th
 
 Since I had some computing resource in my Kubernetes cluster, I thought: why not run the GitHub Actions on my Kubernetes cluster? It will enable GitHub Actions to run `kubectl` commands directly in my cluster, and therefore automatically update any deployment. That is the motivation for this post, and it is what introduced me to [Actions Runner Controller](https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners-with-actions-runner-controller/quickstart-for-actions-runner-controller#introduction).
 
-Although I have eventually decided not to use Actions Runner Controller for this purpose, I still found it pretty fascinating how everything worked. So I decided to write down the process here.
+This post will guide you through setting up Actions Runner Controller on your Kubernetes cluster and using it in your GitHub Actions workflow.
 
 ## Create a GitHub organization (optional)
 
@@ -115,7 +115,5 @@ As for how to set these secrets, you can follow the official guide: [Using secre
 
 ## Conclusion
 
-Setting up my own GitHub Actions runner was pretty daunting at first, but ARC has made it quite a bit easier. Although I'm currently okay with using GitHub's runners, this will definitely help me in the future with bigger projects.
-
-Although it was the motivation for this post, for the purpose of automatically restarting my Kubernetes deployments, I will likely use [Argo CD Image Updater](https://argocd-image-updater.readthedocs.io/) instead, since it decouples my git repository from kubernetes cluster.
+Setting up my own GitHub Actions runner was pretty daunting at first, but ARC has made it quite a bit easier. It's awesome to have `kubectl` commands integrated into GitHub Actions.
 

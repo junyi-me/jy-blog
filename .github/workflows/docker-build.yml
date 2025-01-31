@@ -38,3 +38,15 @@ jobs:
       - name: Push Docker image
         run: docker push $DOCKER_REPO:release && docker push $DOCKER_REPO:$DATE_TAG
 
+  deploy:
+    needs: [build]
+    runs-on: jylab-runner-set
+
+    steps:
+      - name: Restart deployment
+        env:
+          KUBE_CONFIG: ${{ secrets.JYLAB_KUBE_CONFIG }}
+        uses: actions-hub/kubectl@master
+        with:
+          args: rollout restart -n myself deployment/blog-deployment
+
