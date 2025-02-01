@@ -1,6 +1,7 @@
 ---
 date: 2025-01-29
 title: Tailscale is awesome for self-hosting
+image: tailscale.jpg
 tags: [self-hosting, tailscale, vpn, networking, kubernetes, linux]
 categories: [self-hosting]
 ---
@@ -84,5 +85,7 @@ MASQUERADE  all  --  anywhere             anywhere             mark match 0x4000
 
 ## Done!
 
-Now you should be able to access your services using the public IP of the EC2 instance🥳
+Now you should be able to access your services using the public IP of the EC2 instance. 🥳
+
+In my case, since I have a DNS record on Cloudflare pointing to the public IP of my EC2 instance ([junyi.me](https://junyi.me/)), I confirmed everything was working by simply visiting the domain.
 

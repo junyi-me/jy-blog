@@ -1,6 +1,7 @@
 ---
 date: 2025-01-10
 title: How to get a hyperlink from the clipboard
+image: images/html.jpg
 tags: [svelte, frontend]
 categories: [web-dev]
 ---

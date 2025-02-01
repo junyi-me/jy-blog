@@ -1,7 +1,7 @@
 ---
 date: 2024-11-16
 title: k3s worker node with multiple IPs
-image: 
+image: images/network.jpg
 tags: [k3s, kubernetes, networking, linux]
 categories: [self-hosting]
 ---

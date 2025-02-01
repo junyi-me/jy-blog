@@ -1,6 +1,7 @@
 ---
 date: 2024-12-10
 title: Setting up host-only network on VMWare Ubuntu 7
+image: images/vm.jpg
 tags: [VM, networking]
 ---
 

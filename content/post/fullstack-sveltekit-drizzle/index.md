@@ -1,6 +1,7 @@
 ---
 date: 2025-01-09
 title: Developing a fullstack application with SvelteKit + Drizzle
+image: drizzle.jpg
 tags: [svelte, frontend, backend, database]
 categories: [web-dev]
 ---

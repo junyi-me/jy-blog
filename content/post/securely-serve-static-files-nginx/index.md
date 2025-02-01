@@ -1,7 +1,7 @@
 ---
 date: 2024-12-10
 title: Securely hosting static files with Nginx
-image: 
+image: images/server.jpg
 tags: [kubernetes, linux, nginx]
 categories: [web-dev]
 ---
