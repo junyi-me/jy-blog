@@ -87,5 +87,5 @@ MASQUERADE  all  --  anywhere             anywhere             mark match 0x4000
 
 Now you should be able to access your services using the public IP of the EC2 instance. 🥳
 
-In my case, since I have a DNS record on Cloudflare pointing to the public IP of my EC2 instance ([junyi.me](https://junyi.me/)), I confirmed everything was working by simply visiting the domain.
+In my case, since I was doing this for http/https port forwarding, and already had a DNS record on Cloudflare pointing to the public IP of my EC2 instance ([junyi.me](https://junyi.me/)), I confirmed everything was working by simply visiting the domain.
 
