@@ -8,7 +8,10 @@ categories: [self-hosting]
 
 It is a common practice to redirect all http traffic to https. I had neglected it for so long, and finally did it (properly) today. Here's how I did it with the default k3s deployment that came with k3s.
 
-## What not to do
+> [!WARNING]
+> This post has been updated. [Jump to the correct way](#the-correct-way).
+
+## What NOT to do
 
 Previously I tried to directly add an option to the Traefik deployment like this one:
 ```yaml
@@ -23,7 +26,7 @@ Looking into the `traefik` deployment, I quickly realized the pod was restarted,
 
 It turns out that since the `traefik` deployment is managed by k3s using a **helm chart**, each time there is a problem with the deployment, k3s will automatically re-apply the helm chart, causing any manual changes to be lost.
 
-## The correct way
+## What NOT to do (part 2)
 
 So I decided to sit down and learn about how helm charts work, and how to interact with them in k3s.
 
@@ -48,6 +51,36 @@ And add the following to the `spec.valuesContent` section:
 Save and exit, and the `traefik` pod will be restarted with the new configuration.
 
 Available config values are well documented in the [values.yaml](https://github.com/traefik/traefik-helm-chart/blob/master/traefik/values.yaml) file on the official Traefik helm chart repository.
+
+## The correct way
+
+A few hours later, I checked my domain again, and it was again not redirecting to https. After some googling again, I finally learned the correct way to handle this. With k3s managing the `traefik` helm chart, we are not supposed to directly edit the deployment, **nor the helm chart**.
+
+The correct way is to create a resource called `HelmChartConfig` in the `kube-system` namespace, and specify the values like above in the `spec.valuesContent` section.
+
+Example:
+```yaml
+# traefik-custom-conf.yaml
+
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    ports:
+      web:
+        redirectTo:
+          port: websecure
+```
+
+Then apply it with:
+```bash
+kubectl apply -f traefik-custom-conf.yaml
+```
+
+This will create a `HelmChartConfig` resource, and subsequently restart the `traefik` pod with the new configuration.
 
 ## Confirming the change
 
